@@ -1,0 +1,75 @@
+
+<html>
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+var rectangles = [];
+for (var i = 0; i < 8; i++) {
+  var rectangle = document.createElement('div');
+  rectangle.style.position = 'absolute';
+  rectangle.style.left = Math.random() * window.innerWidth + 'px';
+  rectangle.style.top = Math.random() * window.innerHeight + 'px';
+  rectangle.style.width = Math.random() * 100 + 'px';
+  rectangle.style.height = Math.random() * 100 + 'px';
+  rectangle.style.backgroundColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+  document.body.appendChild(rectangle);
+  rectangles.push(rectangle);
+}
+
+for (var i = 0; i < rectangles.length; i++) {
+  var rectangle = rectangles[i];
+  var lines = [];
+  for (var j = 0; j < 4; j++) {
+    var line = document.createElement('div');
+    line.style.position = 'absolute';
+    line.style.backgroundColor = 'black'
+    line.style.width = '100%';
+    line.style.height = '1px';
+    document.body.appendChild(line);
+    lines.push(line);
+  }
+  lines[0].style.top = rectangle.offsetTop + 'px';
+  lines[1].style.top = rectangle.offsetTop + rectangle.offsetHeight + 'px';
+  lines[2].style.left = rectangle.offsetLeft + 'px';
+  lines[3].style.left = rectangle.offsetLeft + rectangle.offsetWidth + 'px';
+}
+
+for (var i = 0; i < rectangles.length; i++) {
+  var rectangle = rectangles[i];
+  var lines = [];
+  for (var j = 0; j < 4; j++) {
+    var line = document.createElement('div');
+    line.style.position = 'absolute';
+    line.style.backgroundColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    line.style.width = '1px';
+    line.style.height = '100%';
+    document.body.appendChild(line);
+    lines.push(line);
+  }
+  lines[0].style.top = rectangle.offsetTop + 'px';
+  lines[1].style.top = rectangle.offsetTop + rectangle.offsetHeight + 'px';
+  lines[2].style.left = rectangle.offsetLeft + 'px';
+  lines[3].style.left = rectangle.offsetLeft + rectangle.offsetWidth + 'px';
+}
+
+for (var i = 0; i < rectangles.length; i++) {
+  var rectangle = rectangles[i];
+  var colors = ['red', 'blue', 'yellow'];
+  for (var j = 0; j < colors.length; j++) {
+    var newRectangle = document.createElement('div');
+    newRectangle.style.position = 'absolute';
+    newRectangle.style.left = rectangle.offsetLeft + 'px';
+    newRectangle.style.top = rectangle.offsetTop + 'px';
+    newRectangle.style.width = rectangle.offsetWidth + 'px';
+    newRectangle.style.height = rectangle.offsetHeight + 'px';
+    newRectangle.style.backgroundColor = colors[j];
+    document.body.appendChild(newRectangle);
+  }
+}
+});
+        </script>
+</head>
+
+
+</html>
