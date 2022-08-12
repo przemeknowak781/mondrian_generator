@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+
+            var verticalLine = document.createElement('div');
+            verticalLine.style.position = 'absolute';
+            verticalLine.style.top = '0px';
+            verticalLine.style.left = '0px';
+            verticalLine.style.width = '1px';
+            verticalLine.style.height = '100%';
+            verticalLine.style.backgroundColor = 'red';
+            document.body.appendChild(verticalLine);
+
+            var horizontalLine = document.createElement('div');
+            horizontalLine.style.position = 'absolute';
+            horizontalLine.style.top = '0px';
+            horizontalLine.style.left = '0px';
+            horizontalLine.style.width = '100%';
+            horizontalLine.style.height = '1px';
+            horizontalLine.style.backgroundColor = 'red';
+            document.body.appendChild(horizontalLine);
+
+            document.onmousemove = function(e) {
+              verticalLine.style.left = e.pageX + 'px';
+              horizontalLine.style.top = e.pageY + 'px';
+            };
+
+            document.onclick = function(e) {
+              verticalLine.style.left = e.pageX + 'px';
+              horizontalLine.style.top = e.pageY + 'px';
+              document.onmousemove = null;
+            };
+
+            document.onclick = function(e) {
+              var verticalLineCopy = verticalLine.cloneNode(true);
+              verticalLineCopy.style.left = e.pageX + 'px';
+              document.body.appendChild(verticalLineCopy);
+
+              var horizontalLineCopy = horizontalLine.cloneNode(true);
+              horizontalLineCopy.style.top = e.pageY + 'px';
+              document.body.appendChild(horizontalLineCopy);
+
+              document.onmousemove = function(e) {
+                verticalLine.style.left = e.pageX + 'px';
+                horizontalLine.style.top = e.pageY + 'px';
+              };
+            };
+
+            document.onclick = function(e) {
+              var verticalLineCopy = verticalLine.cloneNode(true);
+              verticalLineCopy.style.left = e.pageX + 'px';
+              document.body.appendChild(verticalLineCopy);
+
+              var horizontalLineCopy = horizontalLine.cloneNode(true);
+              horizontalLineCopy.style.top = e.pageY + 'px';
+              document.body.appendChild(horizontalLineCopy);
+
+              var rect = document.createElement('div');
+              rect.style.position = 'absolute';
+              rect.style.top = e.pageY + 'px';
+              rect.style.left = e.pageX + 'px';
+              rect.style.width = '1px';
+              rect.style.height = '1px';
+              rect.style.backgroundColor = 'red';
+              document.body.appendChild(rect);
+
+              document.onmousemove = function(e) {
+                verticalLine.style.left = e.pageX + 'px';
+                horizontalLine.style.top = e.pageY + 'px';
+                rect.style.width = e.pageX - parseInt(rect.style.left) + 'px';
+                rect.style.height = e.pageY - parseInt(rect.style.top) + 'px';
+              };
+            };
+
+            document.onclick = function(e) {
+              var verticalLineCopy = verticalLine.cloneNode(true);
+              verticalLineCopy.style.left = e.pageX + 'px';
+              verticalLineCopy.style.width = '7px';
+              verticalLineCopy.style.backgroundColor = 'black';
+              document.body.appendChild(verticalLineCopy);
+
+              var horizontalLineCopy = horizontalLine.cloneNode(true);
+              horizontalLineCopy.style.top = e.pageY + 'px';
+              horizontalLineCopy.style.height = '7px';
+              horizontalLineCopy.style.backgroundColor = 'black';
+              document.body.appendChild(horizontalLineCopy);
+
+              var rect = document.createElement('div');
+              rect.style.position = 'absolute';
+              rect.style.top = e.pageY + 'px';
+              rect.style.left = e.pageX + 'px';
+              rect.style.width = '7px';
+              rect.style.height = '7px';
+              rect.style.backgroundColor = 'red';
+              document.body.appendChild(rect);
+
+              document.onmousemove = function(e) {
+                verticalLine.style.left = e.pageX + 'px';
+                horizontalLine.style.top = e.pageY + 'px';
+                rect.style.width = e.pageX - parseInt(rect.style.left) + 'px';
+                rect.style.height = e.pageY - parseInt(rect.style.top) + 'px';
+              };
+            };
+
+            var clearButton = document.createElement('button');
+            clearButton.innerHTML = 'Clear';
+            clearButton.style.position = 'absolute';
+            clearButton.style.top = '0px';
+            clearButton.style.right = '0px';
+            document.body.appendChild(clearButton);
+
+            clearButton.onclick = function() {
+              while (document.body.firstChild) {
+                document.body.removeChild(document.body.firstChild);
+              }
+              document.body.appendChild(clearButton);
+            };
+          });
+
+
+        </script>
+    </head>
+    <body style="margin: 0;">
+        <div style="background-color: black; position: fixed; bottom: 0; width: 100%; height: 20px; padding: 20px; opacity: .85; z-index: 1000;">
+        </div>
+    </body>
+</html>
